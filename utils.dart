@@ -51,4 +51,12 @@ Character loadCharacterStats() {
 
     return monsters;
   }
+
+  void applyHealthBonus(Character player) {
+    if (Random().nextInt(100) < 30) { 
+      player.health += 10;
+      print('보너스 체력을 얻었습니다! 현재 체력: ${player.health}');
+    }
+  }
+
 }
