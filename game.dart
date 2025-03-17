@@ -73,8 +73,16 @@ class Game {
       if (monster.health <= 0) {
         print('${monster.name}을(를) 물리쳤습니다!');
         defeatedMonsters++;
+        player!.gainExperience(5); // 경험치 처치 보상 경험치 추가
         player!.restoreAttack(); // 아이템 효과 초기화
-        return;
+        player!.earnGold(10);
+        
+        print('\n뽑기를 하시겠습니까? (y/n)');
+          String? input = stdin.readLineSync();
+          if (input == 'y') {
+            player!.gachaDraw();
+          }
+
       }
 
       print('\n${monster.name}의 턴');
@@ -86,7 +94,14 @@ class Game {
     }
   }
 
-  Monster getRandomMonster() {
-    return monsters[Random().nextInt(monsters.length)];
+Monster getRandomMonster() {
+  List<Monster> aliveMonsters = monsters.where((m) => m.health > 0).toList();
+
+  if (aliveMonsters.isEmpty) {
+    print("모든 몬스터를 처치했습니다! 게임을 종료합니다.");
+    exit(0);
   }
+
+  return aliveMonsters[Random().nextInt(aliveMonsters.length)];
+}
 }
