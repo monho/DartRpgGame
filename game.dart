@@ -72,7 +72,10 @@ class Game {
 
       if (monster.health <= 0) {
         print('${monster.name}을(를) 물리쳤습니다!');
+
         defeatedMonsters++;
+        monsters.remove(monster);
+
         player!.gainExperience(5); // 경험치 처치 보상 경험치 추가
         player!.restoreAttack(); // 아이템 효과 초기화
         player!.earnGold(10);
