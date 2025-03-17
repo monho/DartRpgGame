@@ -26,5 +26,29 @@ Character loadCharacterStats() {
   {
 
   }
+  List<Monster> loadMonsterStats() {
+    List<Monster> monsters = [];
 
+    try {
+      final file = File('monsters.txt');
+      if (!file.existsSync()) throw Exception('몬스터 파일이 없습니다.');
+
+      final lines = file.readAsLinesSync();
+      for (var line in lines) {
+        final stats = line.split(',');
+        if (stats.length != 3) continue;
+
+        String name = stats[0];
+        int health = int.parse(stats[1]);
+        int attack = int.parse(stats[2]);
+
+        monsters.add(Monster(name, health, attack));
+      }
+    } catch (e) {
+      print('몬스터 데이터를 불러오는 데 실패했습니다: $e');
+      exit(1);
+    }
+
+    return monsters;
+  }
 }
