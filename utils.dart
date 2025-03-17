@@ -26,7 +26,10 @@ Character loadCharacterStats() {
   {
 
   }
-  List<Monster> loadMonsterStats() {
+
+}
+
+ List<Monster> loadMonsterStats() {
     List<Monster> monsters = [];
 
     try {
@@ -59,4 +62,8 @@ Character loadCharacterStats() {
     }
   }
 
-}
+  void saveResult(Character player, String result) {
+    final file = File('result.txt');
+    file.writeAsStringSync('캐릭터: ${player.name}, 남은 체력: ${player.health}, 결과: $result\n', mode: FileMode.append);
+    print('게임 결과가 result.txt에 저장되었습니다.');
+  }
