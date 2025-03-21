@@ -1,4 +1,4 @@
-import 'game.dart';
+import './core/game.dart';
 
 void main() {
   Game game = Game();
