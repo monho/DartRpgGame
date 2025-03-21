@@ -48,14 +48,24 @@ y 입력 시 뽑기 진행 → 랜덤 장비 획득!
 파일 구조
 ```sh
 /DartRPGGame
-│── main.dart          # 메인 실행 파일
-│── game.dart          # 게임 진행 클래스
-│── character.dart     # 캐릭터 클래스 (플레이어)
-│── monster.dart       # 몬스터 클래스
-│── utils.dart         # 파일 읽기, 데이터 저장
+│── main.dart          # 메인 실행 파일 (게임 시작)
+│── README.md          # 프로젝트 설명 및 실행 방법
+│── result.txt         # 게임 결과 저장 파일
 │── characters.txt     # 캐릭터 정보 저장 파일
 │── monsters.txt       # 몬스터 정보 저장 파일
-│── result.txt         # 게임 결과 저장 파일
+│
+├── character/         # 캐릭터 관련 코드
+│   ├── character.dart # 캐릭터 클래스 (플레이어)
+│
+├── core/              # 핵심 게임 로직
+│   ├── game.dart      # 게임 진행 클래스
+│
+├── monster/           # 몬스터 관련 코드
+│   ├── monster.dart   # 몬스터 클래스
+│
+└── utils/             # 유틸리티 (데이터 처리, 파일 입출력)
+    ├── utils.dart     # 파일 읽기, 데이터 저장
+
 
 ```
  캐릭터 및 몬스터 데이터 (TXT 파일)
